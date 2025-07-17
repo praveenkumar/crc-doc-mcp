@@ -80,6 +80,19 @@ To use this MCP server with Cursor, add the following configuration to your Curs
 
 ```
 
+### Deployed Server
+
+#### Cursor Configuration
+```json
+{
+  "mcpServers": {
+    "crcdocs": {
+      "url": "https://crc-doc-mcp.onrender.com/mcp/"
+    }
+  }
+}
+```
+
 #### Testing the Integration
 
 Once configured, you can test the integration by:
