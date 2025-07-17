@@ -3,6 +3,7 @@
 import asyncio
 import logging
 import re
+import os
 from typing import List, Dict, Any
 import aiohttp
 from bs4 import BeautifulSoup
@@ -12,8 +13,10 @@ from mcp.server.fastmcp import FastMCP
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+PORT=os.getenv("PORT", 8000)
+
 # Initialize FastMCP server
-mcp = FastMCP("CRC Documentation Server")
+mcp = FastMCP("CRC Documentation Server", host="0.0.0.0", port=PORT)
 
 # Documentation sources
 DOC_SOURCES = {
@@ -178,4 +181,4 @@ async def cleanup():
         await session.close()
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
